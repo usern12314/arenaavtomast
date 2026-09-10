@@ -1,0 +1,22 @@
+appId: ru.avtomasterskaya.app
+productName: Автомастерская
+
+directories:
+  output: release
+
+files:
+  - dist/**/*
+  - electron/**/*
+
+
+win:
+  target: nsis
+  artifactName: Avtomasterskaya-Setup-${version}.${ext}
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Автомастерская
+  language: "1049"

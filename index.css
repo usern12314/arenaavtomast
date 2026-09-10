@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0a0e13;
+  --color-panel: #0f151c;
+  --color-panel2: #141c26;
+  --color-panel3: #1a2431;
+  --color-line: #1e2937;
+  --color-line2: #2a3850;
+  --color-muted: #8496ab;
+  --color-faint: #5a6b80;
+  --color-brand: #ff7917;
+  --color-brand2: #ff9e4a;
+  --color-mint: #2dd4a7;
+  --color-danger: #f0654f;
+  --color-sky2: #4cb8ff;
+  --color-gold: #ffc531;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Geologica", "Manrope", ui-sans-serif, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink text-slate-100 font-sans antialiased;
+  font-feature-settings: "cv02", "cv03", "cv04";
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: rgba(255, 121, 23, 0.35);
+  color: #fff;
+}
+
+/* ── Scrollbars ─────────────────────────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #263242 transparent;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #263242;
+  border-radius: 8px;
+  border: 3px solid #0a0e13;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #33445c;
+}
+
+/* ── Inputs ─────────────────────────────────────────────── */
+input[type="date"] {
+  color-scheme: dark;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.55;
+  cursor: pointer;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* ── Focus visibility ───────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid rgba(255, 121, 23, 0.55);
+  outline-offset: 2px;
+}
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
+
+/* ── Print: only receipt area prints ────────────────────── */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #print-area,
+  #print-area * {
+    visibility: visible;
+  }
+  #print-area {
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    color: #000;
+  }
+}
+
+/* subtle noise texture overlay */
+.noise::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
